@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .section {
+            height: 500px;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image {
+            height: 400px;
+            width: 100%;
+            filter: blur(0.5px);
+        }
+
+        .btn {
+            height: 55px;
+            width: 30px;
+            background: red;
+            border: 1px solid rgba(0, 0, 0, 0.408);
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Image Slider</h1>
+    <section class="section">
+        <button class="btn" id="pre"><i class="fa-solid fa-angle-left"></i></button>
+
+        <img class="image" id="image" src="" alt="">
+
+        <button class="btn" id="next"><i class="fa-solid fa-angle-right"></i></button>
+    </section>
+
+
+    <script>
+
+        let image = document.getElementById("image")
+        let pre = document.getElementById("pre")
+        let next = document.getElementById("next")
+
+        let count = 0
+
+        let arr = ["images/img1.jpg", "images/img2.jpg", "images/img3.jpg", "images/img4.jpg"]
+
+        function show(count) {
+            image.src = arr[count]
+        }
+
+        next.addEventListener("click", function () {
+            count++
+            if (count == arr.length) {
+                count = 0
+            }
+            show(count)
+        })
+
+        pre.addEventListener("click", function () {
+            if (count == 0) {
+                count = arr.length
+            }
+            count--
+            show(count)
+        })
+
+        window.addEventListener("load", () => {
+            show(count);
+        });
+
+
+    </script>
+</body>
+
+</html>
